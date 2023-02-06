@@ -271,22 +271,25 @@ const accountAndListFunc = (bool) => {
         </main>
 
         <!-- Recomendações pre-footer -->
-        <div class="w-full bg-white mt-10">
-            <div class="max-w-[1500px] mx-auto">
+        <div class="w-full bg-white mt-10 overflow-x-scroll">
+            <div class="max-w-[1500px] m-auto">
                 <div class="text-[23px] pt-4 font-extrabold">
                     Recomendações para você
                 </div>
-                <div class="flex justify-center items-stretch">
-                    <div class="p4 text-center mx-auto">
-                        <div class="w-[158px] h-[150px] overflow-hidden">
-                            <img src="https://via.placeholder.com/158x150" alt="">
-                        </div>
-                        <div
-                            class="w-[160px] text-[12px] text-teal-600 font-extrabold hover:text-red-600 cursor-pointer">
-                            Título do produto
-                        </div>
-                        <div class="w-[160px] text-[12px] text-gray-500 font-extrabold">
-                            R$ 99,99
+                <div class="flex justify-between items-stretch">
+                    <div v-for="product in $page.props.random_products" :key="product">
+                        <div class="p4 text-center mx-auto">
+                            <div class="w-[158px] h-[150px] overflow-hidden">
+                                <img :src="product.image" alt="">
+                            </div>
+                            <div
+                                class="w-[160px] text-[12px] text-teal-600 font-extrabold hover:text-red-600 cursor-pointer">
+                                {{ product.title.substring(0, 40) }}...
+                            </div>
+                            <div class="w-[160px] text-[12px] text-red-500 font-extrabold">
+                                R${{ product.price }}
+                            </div>
+                            <img width="50" src="/images/logo/PRIME_LOGO.PNG" alt="">
                         </div>
                     </div>
                 </div>
@@ -355,11 +358,13 @@ const accountAndListFunc = (bool) => {
                     Compre por categoria
                 </div>
 
-                <div class="hover:bg-gray-200 pl-6 pr-3">
-                    <div
-                        class="py-2.5 text-[13px] text-black flex justify-between items-center hover:bg-gray-200 cursor-pointer">
-                        Mais vendidos
-                        <ChevronRightIcon :size="20" fillColor="#808080" />
+                <div v-for="cat in $page.props.categories" :key="cat">
+                    <div class="hover:bg-gray-200 pl-6 pr-3">
+                        <Link href="/"
+                            class="py-2.5 text-[13px] text-black flex justify-between items-center hover:bg-gray-200 cursor-pointer">
+                            {{ cat.name }}
+                            <ChevronRightIcon :size="20" fillColor="#808080" />
+                        </Link>
                     </div>
                 </div>
 
