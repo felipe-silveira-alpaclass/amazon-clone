@@ -31,7 +31,7 @@ const accountAndListFunc = (bool) => {
         <div class="flex items-center bg-gray-900 h-[60px] py-2 fixed z-50 min-w-[1150px] w-full">
 
             <div class="flex">
-                <Link
+                <Link href="/"
                     class="text-white h-[50px] p-2 pt-2 border-[1px] border-gray-900 rounded-sm hover:border-[1px] hover:border-gray-100 cursor-pointer">
                     <img width="100" src="/images/logo/AMAZON_LOGO.png" alt="">
                 </Link>
