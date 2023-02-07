@@ -38,21 +38,20 @@ const accountAndListFunc = (bool) => {
             </div>
 
             <div class="flex p-2">
-                <div class="flex justify-center">
-
-                    <MapMarkerOutlineIcon class="pt-2 mt-1 -ml-1 -mr-1" fillColor="#f5f5f5" />
-
-                    <div class="mt-2">
-                        <div class="text-[13px] text-gray-300 font-extrabold">
-                            <span class="ml-1">Entregar para Felipe</span>
-                        </div>
-                        <div class="text-[15px] text-white -mt-1.5 font-extrabold">
-                            <!-- TODO@ limit strings size -->
-                            <span class="ml-1">Francisco Morato 07909-110</span>
+                <Link :href="route('address.index')">
+                    <div class="flex justify-center">
+                        <MapMarkerOutlineIcon class="pt-2 mt-1 -ml-1 -mr-1" fillColor="#f5f5f5" />
+                        <div class="mt-2">
+                            <div class="text-[13px] text-gray-300 font-extrabold">
+                                <span class="ml-1">Entregar para Felipe</span>
+                            </div>
+                            <div class="text-[15px] text-white -mt-1.5 font-extrabold">
+                                <!-- TODO@ limit strings size -->
+                                <span class="ml-1">Francisco Morato 07909-110</span>
+                            </div>
                         </div>
                     </div>
-
-                </div>
+                </Link>
             </div>
 
             <div class="flex grow items-center h-[45px] px-1">
