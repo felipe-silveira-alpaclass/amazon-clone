@@ -19,7 +19,7 @@ const { product } = toRefs(props)
                     <div class="text-2xl p-1 font-semibold w-full text-left">
                         R${{ product.price }}
                     </div>
-                    <img src="/images/logo/PRIME_LOGO.PNG" width="80" alt="">
+                    <img src="/images/logo/PRIME_LOGO.png" width="80" alt="">
                 </div>
                 <div class="flex justify-between items-center">
                     <div class="text-md p-1 font-semibold w-full text-left">

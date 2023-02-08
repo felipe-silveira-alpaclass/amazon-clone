@@ -22,6 +22,7 @@ const accountAndListFunc = (bool) => {
 </script>
 
 <template>
+    <!-- {{ $page.props.auth.user }} -->
     <div class="min-w-[1150px] bg-gray-100 h-full">
 
         <div v-if="accountAndList" class="top-0 z-20 fixed w-full h-full bg-black bg-opacity-70">
@@ -31,27 +32,41 @@ const accountAndListFunc = (bool) => {
         <div class="flex items-center bg-gray-900 h-[60px] py-2 fixed z-50 min-w-[1150px] w-full">
 
             <div class="flex">
-                <Link href="/"
+                <Link
+                    :href="route('dashboard')"
                     class="text-white h-[50px] p-2 pt-2 border-[1px] border-gray-900 rounded-sm hover:border-[1px] hover:border-gray-100 cursor-pointer">
                     <img width="100" src="/images/logo/AMAZON_LOGO.png" alt="">
                 </Link>
             </div>
 
             <div class="flex p-2">
-                <Link :href="route('address.index')">
+                <Link v-if="$page.props.auth.user" :href="route('address.index')">
                     <div class="flex justify-center">
                         <MapMarkerOutlineIcon class="pt-2 mt-1 -ml-1 -mr-1" fillColor="#f5f5f5" />
                         <div class="mt-2">
                             <div class="text-[13px] text-gray-300 font-extrabold">
-                                <span class="ml-1">Entregar para Felipe</span>
+                                <span class="ml-1">Entregar para {{ $page.props.auth.user.first_name }}</span>
                             </div>
                             <div class="text-[15px] text-white -mt-1.5 font-extrabold">
-                                <!-- TODO@ limit strings size -->
-                                <span class="ml-1">Francisco Morato 07909-110</span>
+                                <!-- TODO@  se não houver endereço da erro-->
+                                <span class="ml-1">{{ $page.props.auth.address.city.substring(0, 15) }}... {{ $page.props.auth.address.postcode.substring(0, 10) }}...</span>
                             </div>
                         </div>
                     </div>
                 </Link>
+
+                <div v-else class="flex justify-center">
+                        <MapMarkerOutlineIcon class="pt-2 mt-1 -ml-1 -mr-1" fillColor="#f5f5f5" />
+                        <div class="mt-2">
+                            <div class="text-[13px] text-gray-300 font-extrabold">
+                                <span class="ml-1">Olá</span>
+                            </div>
+                            <div class="text-[15px] text-white -mt-1.5 font-extrabold">
+                                <!-- TODO@ limit strings size -->
+                                <span class="ml-1">Selecione seu endereço</span>
+                            </div>
+                        </div>
+                    </div>
             </div>
 
             <div class="flex grow items-center h-[45px] px-1">
@@ -77,7 +92,8 @@ const accountAndListFunc = (bool) => {
                         <div>
                             <div class="text-[13px] text-gray-300 font-extrabold">
                                 Olá,
-                                <span>sign in</span>
+                                <span v-if="$page.props.auth.user">{{ $page.props.auth.user.first_name.substring(0, 9) }}</span>
+                                <span v-else>sign in</span>
                             </div>
                             <div class="flex items-center">
                                 <div class="text-[15px] text-white -mt-1.5 -mr-0.5 font-extrabold">
@@ -91,16 +107,19 @@ const accountAndListFunc = (bool) => {
                     <div v-if="accountAndList"
                         class="bg-white absolute z-50 top-[56px] -ml-[230px] w-[480px] rounded-sm px-6">
                         <div>
-                            <div class="flex items-center justify-between py-2.5 border-b">
+                            <div v-if="! $page.props.auth.user" class="flex items-center justify-between py-2.5 border-b">
                                 <!-- @TODO Melhorar essa sessão, butao de login e criar conta -->
-                                <div class="text-sm truncate">
-                                    Faça seu login.
-                                </div>
-                                <div
+                                <Link
+                                    :href="route('login')"
+                                    class="text-sm truncate hover:underline hover:text-teal-600 hover:font-extrabold">
+                                        Faça seu login
+                                </Link>
+                                <Link
+                                    :href="route('register')"
                                     class="flex items-center text-sm font-bold text-teal-600 hover:text-red-600 hover:underline">
                                     Cria conta
                                     <ChevronRightIcon :size="20" fillColor="#808080" />
-                                </div>
+                                </Link>
                             </div>
 
                             <div class="flex ">
@@ -119,11 +138,19 @@ const accountAndListFunc = (bool) => {
                                         <div class="font-extrabold pt-3">
                                             Sua Conta
                                         </div>
-                                        <div class="text-sm hover:text-red-600 hover:underline pt-3">
-                                            Conta
-                                        </div>
-                                        <div>
-                                            Sair.
+                                        <div class="flex flex-col items-start">
+                                            <Link
+                                                :href="route('profile.edit')"
+                                                class="text-sm hover:text-red-600 hover:underline pt-3 bolck">
+                                                    Conta
+                                            </Link>
+                                            <Link
+                                                :href="route('logout')"
+                                                method="post"
+                                                as="button"
+                                                class="text-sm hover:text-red-600 hover:underline pt-3 block">
+                                                Sair
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
@@ -281,14 +308,18 @@ const accountAndListFunc = (bool) => {
                             <div class="w-[158px] h-[150px] overflow-hidden">
                                 <img :src="product.image" alt="">
                             </div>
-                            <div
-                                class="w-[160px] text-[12px] text-teal-600 font-extrabold hover:text-red-600 cursor-pointer">
-                                {{ product.title.substring(0, 40) }}...
-                            </div>
+                            <Link
+                                :href="route('product.index', { id: product.id })"
+                            >
+                                <div
+                                    class="w-[160px] text-[12px] text-teal-600 font-extrabold hover:text-red-600 cursor-pointer">
+                                    {{ product.title.substring(0, 40) }}...
+                                </div>
+                            </Link>
                             <div class="w-[160px] text-[12px] text-red-500 font-extrabold">
                                 R${{ product.price }}
                             </div>
-                            <img width="50" src="/images/logo/PRIME_LOGO.PNG" alt="">
+                            <img width="50" src="/images/logo/PRIME_LOGO.png" alt="">
                         </div>
                     </div>
                 </div>

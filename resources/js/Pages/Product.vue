@@ -1,13 +1,28 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link } from '@inertiajs/vue3';
-import { toRefs } from 'vue';
+import { toRefs, computed } from 'vue';
 import MapMarkerOutlineIcon from 'vue-material-design-icons/MapMarkerOutline.vue';
+
+import { useCartStore } from '@/store/cart';
+import { storeToRefs } from 'pinia';
+
+const cartStore = useCartStore();
+const { cart } = storeToRefs(cartStore);
 
 const props = defineProps({
     product: Object,
 });
 const { product } = toRefs(props);
+
+const addToCart = () => {
+    cart.value.push(product)
+};
+
+const isAlreadyInCart = computed() => {
+    let res = cart.value.find(c => c.id === product.value.id);
+    return res ? true : false;
+};
 </script>
 
 <template>
@@ -40,12 +55,14 @@ const { product } = toRefs(props);
                     <div class="my-2 mx-3 mb-2">
                         <div class="flex items-center justify-between border-b border-gray-300 pb-1">
                             <Link
-                                href="/"
+                                v-if="$page.props.auth.user"
+                                :href="route('address.index')"
                                 class="flex items-center text-xs font-extrabold text-teal-700 hover:text-red-600 cursor-pointer"
                             >
-                                <MapMarkerOutlineIcon :size="17"/> Entregar para Felipe - 07909-000
+                                <MapMarkerOutlineIcon :size="17"/> Entregar para {{ $page.props.auth.user.first_name }} - {{ $page.props.auth.address.postcode }}
                             </Link>
                             <Link
+                                v-else
                                 :href="route('login')"
                                 class="flex items-center text-xs font-extrabold text-teal-700 hover:text-red-600 cursor-pointer"
                             >
@@ -57,10 +74,12 @@ const { product } = toRefs(props);
                                 R$ {{ product.price }}
                             </div>
                             <button
+                                :disabled="isAlreadyInCart"
+                                @click="addToCart(product)"
                                 class="bg-yellow-400 px-2 font-bold text-sm rounded-lg border shadow-sm cursor-pointer"
                             >
-                                <!-- <span>Item adicionado</span> -->
-                                <span>Adicionar ao carrinho</span>
+                                <span v-if="isAlreadyInCart">Item adicionado</span>
+                                <span v-else>Adicionar ao carrinho</span>
                             </button>
                         </div>
                     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -35,7 +36,20 @@ class AddressOptionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $address = new Address();
+            $address->user_id = $request->user_id;
+            $address->addr1 = $request->addr1;
+            $address->addr2 = $request->addr2;
+            $address->city = $request->city;
+            $address->postcode = $request->postcode;
+            $address->country = $request->country;
+
+            $address->save();
+            return redirect()->route('address.index');
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -80,6 +94,11 @@ class AddressOptionsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $address =  Address::find($id);
+            $address->delete();
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()]);
+        }
     }
 }
