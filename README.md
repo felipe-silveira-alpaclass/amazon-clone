@@ -1,22 +1,25 @@
 # Projeto Amazon Clone com Laravel Sail, Inertia Vue3 e Stripe
  Este é um projeto de clone da Amazon, desenvolvido com Laravel Sail, Inertia Vue3 e Stripe. O objetivo deste projeto é apresentar um site de e-commerce completo, com todas as funcionalidades básicas, incluindo adição eremoção de usuários e endereços, adição e remoção de itens no carrinho de compras e pagamento com Stripe.
-# Vídeo Demonstração
-    [![Vídeo Demonstração](https://img.youtube.com/vi/1Q2Q3Q4Q5Q6/0.jpg)](https://www.youtube.com/watch?v=1Q2Q3Q4Q5Q6)
-## Instalação
-
-Para instalar e testar este projeto em seu computador, você precisará ter o Composer e o Node.js instalados. Além disso, você precisará criar uma conta no Stripe para testar as compras.
 
 ### Requisitos
 
-- PHP 7.4 ou superior
-- Node.js e npm
-- Banco de dados MySQL ou PostgreSQL
-- Uma conta ativa no Stripe
+- (PHP 7.4 ou superior)[https://www.php.net/downloads.php]
+- (Node.js)[https://nodejs.org/en/download/]
+- (Composer)[https://getcomposer.org/download/]
+- (Docker)[https://docs.docker.com/get-docker/] ?
+- (Docker Compose)[https://docs.docker.com/compose/install/] ?
+- (Laravel Sail)[https://laravel.com/docs/8.x/sail] 
+- (Stripe)[https://stripe.com/br]
+- (MySQL ou PostgreSQL)[https://www.postgresql.org/download/]
+- (Git)[https://git-scm.com/downloads]
+- (NPM)[https://www.npmjs.com/get-npm]
 
+## Instalação
+Para instalar e testar este projeto em seu computador, você precisará ter o Composer e o Node.js instalados. Além disso, você precisará criar uma conta no Stripe para testar as compras.
 ### Clone o repositório deste projeto em seu computador.
 
 ```bash
-git clone
+git clone git@github.com:felipe-silveira-alpaclass/amazon-clone.git
 ```
 
 ### Entre na pasta do projeto e execute o seguinte comando para instalar as dependências do Laravel.
@@ -42,13 +45,13 @@ npm install
 ### Rode as migrations do projeto com o seguinte comando
 
 ```bash
-php sail migrate
+php artisan migrate
 ```
 
-### Inicie o servidor de desenvolvimento com o seguinte comando
+### Execute o seguinte comando para iniciar o servidor de desenvolvimento.
 
 ```bash
-php sail lift
+php sail up
 ```
 
 ## Dependências de Desenvolvimento
