@@ -1,66 +1,131 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<!-- Projeto Amazon Clone com Laravel Sail, Inertia Vue3 e Stripe
+Este é um projeto de clone da Amazon, desenvolvido com Laravel Sail, Inertia Vue3 e Stripe. O objetivo deste projeto é apresentar um site de e-commerce completo, com todas as funcionalidades básicas, incluindo adição eremoção de usuários e endereços, adição e remoção de itens no carrinho de compras e pagamento com Stripe.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Instalação
+Para instalar e testar este projeto em seu computador, você precisará ter o Composer e o Node.js instalados. Além disso, você precisará criar uma conta no Stripe para testar as compras.
 
-## About Laravel
+Requisitos
+PHP 7.4 ou superior
+Node.js e npm
+Banco de dados MySQL ou PostgreSQL
+Uma conta ativa no Stripe
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Clone o repositório deste projeto em seu computador.
+bash
+Copy code
+git clone https://github.com/seu-usuario/seu-repositorio
+Entre na pasta do projeto e execute o seguinte comando para instalar as dependências do Laravel.
+Copy code
+composer install
+Renomeie o arquivo .env.example para .env e adicione suas informações de banco de dados e chave do Stripe.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Execute o seguinte comando para gerar uma chave secreta para sua aplicação.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+Copy code
+php artisan key:generate
+Execute o seguinte comando para instalar as dependências do Node.js.
+Copy code
+npm install
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Configure as informações do banco de dados e da conta do Stripe no arquivo .env
+Rode as migrations do projeto com o seguinte comando
+Copy code
+php sail migrate
+Inicie o servidor de desenvolvimento com o seguinte comando
+Copy code
+php sail lift
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Dependências de Desenvolvimento
+@inertiajs/vue3: 1.0.0
+@tailwindcss/forms: 0.5.3
+@vitejs/plugin-vue: 4.0.0
+Autoprefixer: 10.4.12
+Axios: 1.1.2
+Laravel-vite-plugin: 0.7.2
+Lodash: 4.17.19
+PostCSS: 8.4.18
+TailwindCSS: 3.2.1
+Vite: 4.0.0
+Vue: 3.2.41
+Dependências
+Animate.css: 4.1.1
+Pinia: 2.0.30
+Pinia-plugin-persistedstate: 3.0. -->
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+<!-- Melhore a apresentação do readme usando como base o texto acima -->
 
-## Laravel Sponsors
+# Projeto Amazon Clone com Laravel Sail, Inertia Vue3 e Stripe
+## Este é um projeto de clone da Amazon, desenvolvido com Laravel Sail, Inertia Vue3 e Stripe. O objetivo deste projeto é apresentar um site de e-commerce completo, com todas as funcionalidades básicas, incluindo adição eremoção de usuários e endereços, adição e remoção de itens no carrinho de compras e pagamento com Stripe.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Instalação
 
-### Premium Partners
+Para instalar e testar este projeto em seu computador, você precisará ter o Composer e o Node.js instalados. Além disso, você precisará criar uma conta no Stripe para testar as compras.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### Requisitos
 
-## Contributing
+- PHP 7.4 ou superior
+- Node.js e npm
+- Banco de dados MySQL ou PostgreSQL
+- Uma conta ativa no Stripe
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Clone o repositório deste projeto em seu computador.
 
-## Code of Conduct
+```bash
+git clone
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Entre na pasta do projeto e execute o seguinte comando para instalar as dependências do Laravel.
 
-## Security Vulnerabilities
+```bash
+composer install
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Renomeie o arquivo .env.example para .env e adicione suas informações de banco de dados e chave do Stripe.
 
-## License
+### Execute o seguinte comando para gerar uma chave secreta para sua aplicação.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+php artisan key:generate
+```
+
+### Execute o seguinte comando para instalar as dependências do Node.js.
+
+```bash
+npm install
+```
+
+### Configure as informações do banco de dados e da conta do Stripe no arquivo .env
+
+### Rode as migrations do projeto com o seguinte comando
+
+```bash
+php sail migrate
+```
+
+### Inicie o servidor de desenvolvimento com o seguinte comando
+
+```bash
+php sail lift
+```
+
+## Dependências de Desenvolvimento
+
+- @inertiajs/vue3: 1.0.0
+- @tailwindcss/forms: 0.5.3
+- @vitejs/plugin-vue: 4.0.0
+- Autoprefixer: 10.4.12
+- Axios: 1.1.2
+- Laravel-vite-plugin: 0.7.2
+- Lodash: 4.17.19
+- PostCSS: 8.4.18
+- TailwindCSS: 3.2.1
+- Vite: 4.0.0
+- Vue: 3.2.41
+
+## Dependências
+
+- Animate.css: 4.1.1
+- Pinia: 2.0.30
+- Pinia-plugin-persistedstate: 3.0.0
+
