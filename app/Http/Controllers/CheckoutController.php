@@ -18,6 +18,7 @@ class CheckoutController extends Controller
     public function index()
     {
         $stripe = new \Stripe\StripeClient(env('STRIPE_KEY_SECRET'));
+        $stripeApiKey = env('STRIPE_KEY_PUBLIC');
 
         $order = Order::where('user_id', auth()->user()->id)->where('payment_intent', null)
         ->firstOrCreate();
@@ -35,6 +36,7 @@ class CheckoutController extends Controller
         return Inertia::render('Checkout', [
             'intent' => $intent,
             'order' => $order,
+            'stripeApiKey' => $stripeApiKey,
         ]);
     }
 

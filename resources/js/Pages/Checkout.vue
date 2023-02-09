@@ -16,8 +16,10 @@ let card = null
 let form = null
 let isProcessing = ref(false)
 const data = useForm({ payment_intent: null, })
+// get the stripeapikey from the page props
+
 onMounted(() => {
-    stripe = Stripe(env('STRIPE_KEY_PUBLIC'));
+    stripe = Stripe("pk_test_51KikFBHacZX0AU3463G0KLGbtkxdBCuQ2yBkI6r4urv8IZ6QtjRk3kS2qwi8hzsNIIzqLK2Go7Z6oUBJC9vHJRiw0009IBJrKP");
     elements = stripe.elements();
     var style = {
         base: {

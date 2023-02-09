@@ -6,8 +6,8 @@
 - [PHP 7.4 ou superior](https://www.php.net/downloads.php)
 - [Node.js](https://nodejs.org/en/download/)
 - [Composer](https://getcomposer.org/download/)
-- [Docker](https://docs.docker.com/get-docker/) ?
-- [Docker Compose](https://docs.docker.com/compose/install/) ?
+<!-- - [Docker](https://docs.docker.com/get-docker/) ?
+- [Docker Compose](https://docs.docker.com/compose/install/) ? -->
 - [Laravel Sail](https://laravel.com/docs/8.x/sail) 
 - [Stripe](https://stripe.com/br)
 - [MySQL ou PostgreSQL](https://www.postgresql.org/download/)
