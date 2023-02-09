@@ -17,7 +17,7 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        $stripe = new \Stripe\StripeClient('sk_test_51KikFBHacZX0AU34FSWVSjj2hkhJ54xISib1vq22m7FeFyqr18154RxCoNGe3EQB0E3G7nQsIJg4dNRCvjFO2TRa00qZPEsnoS');
+        $stripe = new \Stripe\StripeClient(env('STRIPE_KEY_SECRET'));
 
         $order = Order::where('user_id', auth()->user()->id)->where('payment_intent', null)
         ->firstOrCreate();
