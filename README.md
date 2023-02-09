@@ -3,16 +3,16 @@
 
 ### Requisitos
 
-- (PHP 7.4 ou superior)[https://www.php.net/downloads.php]
-- (Node.js)[https://nodejs.org/en/download/]
-- (Composer)[https://getcomposer.org/download/]
-- (Docker)[https://docs.docker.com/get-docker/] ?
-- (Docker Compose)[https://docs.docker.com/compose/install/] ?
-- (Laravel Sail)[https://laravel.com/docs/8.x/sail] 
-- (Stripe)[https://stripe.com/br]
-- (MySQL ou PostgreSQL)[https://www.postgresql.org/download/]
-- (Git)[https://git-scm.com/downloads]
-- (NPM)[https://www.npmjs.com/get-npm]
+- [PHP 7.4 ou superior](https://www.php.net/downloads.php)
+- [Node.js](https://nodejs.org/en/download/)
+- [Composer](https://getcomposer.org/download/)
+- [Docker](https://docs.docker.com/get-docker/) ?
+- [Docker Compose](https://docs.docker.com/compose/install/) ?
+- [Laravel Sail](https://laravel.com/docs/8.x/sail) 
+- [Stripe](https://stripe.com/br)
+- [MySQL ou PostgreSQL](https://www.postgresql.org/download/)
+- [Git](https://git-scm.com/downloads)
+- [NPM](https://www.npmjs.com/get-npm)
 
 ## Instalação
 Para instalar e testar este projeto em seu computador, você precisará ter o Composer e o Node.js instalados. Além disso, você precisará criar uma conta no Stripe para testar as compras.
@@ -53,6 +53,15 @@ php artisan migrate
 ```bash
 php sail up
 ```
+
+### Execute o seguinte comando para compilar os arquivos CSS e JS.
+
+```bash
+npm run dev
+```
+
+### Acesse o endereço http://localhost para ver o projeto em execução.
+
 
 ## Dependências de Desenvolvimento
 
