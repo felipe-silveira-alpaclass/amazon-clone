@@ -56,7 +56,7 @@ Pinia-plugin-persistedstate: 3.0. -->
 <!-- Melhore a apresentação do readme usando como base o texto acima -->
 
 # Projeto Amazon Clone com Laravel Sail, Inertia Vue3 e Stripe
-## Este é um projeto de clone da Amazon, desenvolvido com Laravel Sail, Inertia Vue3 e Stripe. O objetivo deste projeto é apresentar um site de e-commerce completo, com todas as funcionalidades básicas, incluindo adição eremoção de usuários e endereços, adição e remoção de itens no carrinho de compras e pagamento com Stripe.
+ Este é um projeto de clone da Amazon, desenvolvido com Laravel Sail, Inertia Vue3 e Stripe. O objetivo deste projeto é apresentar um site de e-commerce completo, com todas as funcionalidades básicas, incluindo adição eremoção de usuários e endereços, adição e remoção de itens no carrinho de compras e pagamento com Stripe.
 
 ## Instalação
 
