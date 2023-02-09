@@ -10,19 +10,18 @@ import { storeToRefs } from 'pinia';
 const cartStore = useCartStore();
 const { cart } = storeToRefs(cartStore);
 
-const props = defineProps({
-    product: Object,
-});
+const props = defineProps({product: Object});
+
 const { product } = toRefs(props);
 
-const addToCart = () => {
+const addToCart = (product) => {
     cart.value.push(product)
 };
 
-const isAlreadyInCart = computed() => {
+const isAlreadyInCart = computed(() => {
     let res = cart.value.find(c => c.id === product.value.id);
     return res ? true : false;
-};
+});
 </script>
 
 <template>
@@ -55,7 +54,7 @@ const isAlreadyInCart = computed() => {
                     <div class="my-2 mx-3 mb-2">
                         <div class="flex items-center justify-between border-b border-gray-300 pb-1">
                             <Link
-                                v-if="$page.props.auth.user"
+                                v-if="$page.props.auth.user && $page.props.auth.address"
                                 :href="route('address.index')"
                                 class="flex items-center text-xs font-extrabold text-teal-700 hover:text-red-600 cursor-pointer"
                             >

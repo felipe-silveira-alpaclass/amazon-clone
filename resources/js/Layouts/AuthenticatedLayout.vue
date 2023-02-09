@@ -10,6 +10,9 @@ import AccountCircleIcon from 'vue-material-design-icons/AccountCircle.vue';
 import CloseIcon from 'vue-material-design-icons/Close.vue';
 import ChevronRightIcon from 'vue-material-design-icons/ChevronRight.vue';
 
+import { useCartStore } from '@/store/cart';
+
+const cartStore = useCartStore();
 
 const showMenu = ref(false);
 const accountAndList = ref(false);
@@ -40,7 +43,7 @@ const accountAndListFunc = (bool) => {
             </div>
 
             <div class="flex p-2">
-                <Link v-if="$page.props.auth.user" :href="route('address.index')">
+                <Link v-if="$page.props.auth.address" :href="route('address.index')">
                     <div class="flex justify-center">
                         <MapMarkerOutlineIcon class="pt-2 mt-1 -ml-1 -mr-1" fillColor="#f5f5f5" />
                         <div class="mt-2">
@@ -49,13 +52,13 @@ const accountAndListFunc = (bool) => {
                             </div>
                             <div class="text-[15px] text-white -mt-1.5 font-extrabold">
                                 <!-- TODO@  se não houver endereço da erro-->
-                                <span class="ml-1">{{ $page.props.auth.address.city.substring(0, 15) }}... {{ $page.props.auth.address.postcode.substring(0, 10) }}...</span>
+                                <span class="ml-1">{{ $page.props.auth.address.city.substring(0, 15)  }}... {{ $page.props.auth.address.postcode.substring(0, 10) }}...</span>
                             </div>
                         </div>
                     </div>
                 </Link>
 
-                <div v-else class="flex justify-center">
+                <Link :href="route('address.index')" v-else class="flex justify-center">
                         <MapMarkerOutlineIcon class="pt-2 mt-1 -ml-1 -mr-1" fillColor="#f5f5f5" />
                         <div class="mt-2">
                             <div class="text-[13px] text-gray-300 font-extrabold">
@@ -66,7 +69,7 @@ const accountAndListFunc = (bool) => {
                                 <span class="ml-1">Selecione seu endereço</span>
                             </div>
                         </div>
-                    </div>
+                    </Link>
             </div>
 
             <div class="flex grow items-center h-[45px] px-1">
@@ -176,19 +179,20 @@ const accountAndListFunc = (bool) => {
                     </div>
                 </div>
 
-                <div
+                <Link
+                    :href="route('cart.index')"
                     class="relative h-[50px] p-2 border-[1px] border-gray-900 rounded-sm hover:border-[1px] hover:border-gray-100 cursor-pointer">
                     <div class="flex items-center justify-center">
                         <span class="absolute text-center rigth-[21px] w-[14px] -top-0 rounded-full text-[20px]">
-                            <div class="text-orange-400 font-extrabold h-[16px] bg-gray-900 mt-1">
-                                0
+                            <div class="text-orange-400 text-xs text-start  font-extrabold h-[16px] bg-gray-900 mt-1">
+                                {{ cartStore.cart.length }}
                             </div>
                         </span>
                         <div>
                             <CartMinusIcon :size="40" class="text-white" />
                         </div>
                     </div>
-                </div>
+                </Link>
 
                 <!-- <div
                     class="h-[50px] p-2 border-[1px] border-gray-900 rounded-sm hover:border-[1px] hover:border-gray-100 cursor-pointer">
