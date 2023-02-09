@@ -32,7 +32,7 @@
             </div>
             <div v-if="$page.props.auth.address" class="relative border border-gray-400 rounded-md w-1/3 shadow-md">
                 <div class="flex items-center justify-start p-3 text-xs text-gray-600 font-extrabold border-b border-b-gray-400">
-                    Default: <img class="h-3 mt-1.5 ml-2" src="/images/logo/AMAZON_LOGO_DARK.png" alt="">
+                    <img class="h-3 mt-1.5 ml-2" src="/images/logo/AMAZON_LOGO_DARK.png" alt="">
                 </div>
                 <div class="text-sm font-extrabold px-4 pt-4">
                     {{ $page.props.auth.user.first_name }} {{ $page.props.auth.user.last_name }}

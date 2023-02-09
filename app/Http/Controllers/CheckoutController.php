@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderShipped;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Inertia\Inertia;
 
 class CheckoutController extends Controller
@@ -14,7 +17,25 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Checkout');
+        $stripe = new \Stripe\StripeClient('sk_test_51KikFBHacZX0AU34FSWVSjj2hkhJ54xISib1vq22m7FeFyqr18154RxCoNGe3EQB0E3G7nQsIJg4dNRCvjFO2TRa00qZPEsnoS');
+
+        $order = Order::where('user_id', auth()->user()->id)->where('payment_intent', null)
+        ->firstOrCreate();
+
+        // if (is_null($order)) {
+        //     return redirect()->route('checkout_success.index');
+        // }
+
+        $intent = $stripe->paymentIntents->create([
+            'amount' => (int) $order->total,
+            'currency' => 'brl',
+            'payment_method_types' => ['card'],
+        ]);
+
+        return Inertia::render('Checkout', [
+            'intent' => $intent,
+            'order' => $order,
+        ]);
     }
 
     /**
@@ -35,7 +56,24 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $res = Order::where('user_id', auth()->user()->id)->where('payment_intent', null)
+        ->first();
+
+        if (!is_null($res)) {
+            $res->total = $request->total;
+            $res->total_decimal = $request->total_decimal;
+            $res->items = json_encode($request->items);
+            $res->save();
+        } else {
+            $order = new Order();
+            $order->user_id = auth()->user()->id;
+            $order->total = $request->total;
+            $order->total_decimal = $request->total_decimal;
+            $order->items = json_encode($request->items);
+            $order->save();
+        }
+
+        return redirect()->route('checkout.index');
     }
 
     /**
@@ -67,9 +105,17 @@ class CheckoutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $order = Order::where('user_id', auth()->user()->id)->where('payment_intent', null)
+        ->first();
+
+        $order->payment_intent = $request['payment_intent'];
+        $order->save();
+
+        Mail::to($request->user())->send(new OrderShipped($order));
+
+        return redirect()->route('checkout_success.index');
     }
 
     /**
