@@ -83,3 +83,8 @@ npm run dev
 - Pinia: 2.0.30
 - Pinia-plugin-persistedstate: 3.0.0
 
+## Screenshots
+<!-- ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here) -->
+## Licença
+
+[MIT](https://choosealicense.com/licenses/mit/)
