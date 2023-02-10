@@ -1,5 +1,5 @@
 # Projeto Amazon Clone com Laravel Sail, Inertia Vue3 e Stripe
- Este é um projeto de clone da Amazon, desenvolvido com Laravel Sail, Inertia Vue3 e Stripe. O objetivo deste projeto é apresentar um site de e-commerce completo, com todas as funcionalidades básicas, incluindo adição eremoção de usuários e endereços, adição e remoção de itens no carrinho de compras e pagamento com Stripe.
+ Este é um projeto de clone da Amazon, desenvolvido com Laravel Sail, Inertia Vue3 e Stripe. O objetivo deste projeto é apresentar um site de e-commerce completo, com todas as funcionalidades básicas, incluindo caadstro de usuários e endereços, adição e remoção de itens no carrinho de compras e pagamento com Stripe.
 
 ### Requisitos
 
@@ -84,7 +84,12 @@ npm run dev
 - Pinia-plugin-persistedstate: 3.0.0
 
 ## Screenshots
-<!-- ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here) -->
+![Página Inicial](https://github.com/felipe-silveira-alpaclass/amazon-clone/blob/main/public/screenshots/Screenshot%20from%202023-02-10%2006-57-05.png)
+![Sidebar](https://github.com/felipe-silveira-alpaclass/amazon-clone/blob/main/public/screenshots/Screenshot%20from%202023-02-10%2006-58-16.png)
+![Categorias](https://github.com/felipe-silveira-alpaclass/amazon-clone/blob/main/public/screenshots/Screenshot%20from%202023-02-10%2006-58-29.png)
+![Carrinho de Compras](https://github.com/felipe-silveira-alpaclass/amazon-clone/blob/main/public/screenshots/Screenshot%20from%202023-02-10%2006-59-30.png)
+![Checkout](https://github.com/felipe-silveira-alpaclass/amazon-clone/blob/main/public/screenshots/Screenshot%20from%202023-02-10%2006-59-42.png)
+![Email de confirmação de compra](https://github.com/felipe-silveira-alpaclass/amazon-clone/blob/main/public/screenshots/Screenshot%20from%202023-02-10%2007-00-21.png)
 ## Licença
 
 [MIT](https://choosealicense.com/licenses/mit/)
